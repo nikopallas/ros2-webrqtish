@@ -76,8 +76,8 @@ sudo apt install ros-jazzy-desktop
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/ros2-web-gui.git
-cd ros2-web-gui
+git clone https://github.com/nikopallas/ros2-webrqtish.git
+cd ros2-webrqtish
 
 # Install Python dependencies
 pip install -r backend/requirements.txt
