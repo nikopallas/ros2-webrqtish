@@ -5,6 +5,9 @@ A lightweight web-based alternative to rqt for ROS2, featuring topic monitoring/
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
 ![ROS2](https://img.shields.io/badge/ROS2-Jazzy-green.svg)
 ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Vibe Coded](https://img.shields.io/badge/Vibe-Coded-ff69b4.svg)
+
+> **Note**: This project was vibe coded with [Claude Code](https://claude.ai/code). The code has been reviewed and tested, but use at your own discretion.
 
 ## Features
 
