@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROS2 Web GUI</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>ROS2 Web GUI</h1>
+        <div class="connection-status" id="connection-status">
+            <span class="status-dot disconnected"></span>
+            <span class="status-text">Disconnected</span>
+        </div>
+    </header>
+
+    <main>
+        <div class="panel topic-panel">
+            <div class="panel-header">
+                <h2>Topics</h2>
+                <button id="refresh-topics" class="btn btn-small">Refresh</button>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="topic-search" placeholder="Filter topics...">
+            </div>
+
+            <div class="topic-list" id="topic-list">
+                <!-- Topics will be populated here -->
+            </div>
+
+            <div class="topic-details" id="topic-details">
+                <div class="details-header">
+                    <h3 id="selected-topic-name">Select a topic</h3>
+                    <button id="subscribe-btn" class="btn btn-primary" disabled>Subscribe</button>
+                </div>
+
+                <div class="message-display" id="message-display">
+                    <div class="message-header">
+                        <span>Messages</span>
+                        <span class="message-rate" id="message-rate">0 msg/s</span>
+                    </div>
+                    <pre id="message-content">No messages yet</pre>
+                </div>
+
+                <div class="publisher-section">
+                    <h4>Publish Message</h4>
+                    <textarea id="publish-data" placeholder='{"data": "Hello"}' rows="4"></textarea>
+                    <button id="publish-btn" class="btn btn-secondary" disabled>Publish</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel graph-panel">
+            <div class="panel-header">
+                <h2>Node Graph</h2>
+                <div class="graph-controls">
+                    <button id="refresh-graph" class="btn btn-small">Refresh</button>
+                    <button id="reset-zoom" class="btn btn-small">Reset Zoom</button>
+                    <label>
+                        <input type="checkbox" id="auto-refresh" checked>
+                        Auto-refresh
+                    </label>
+                </div>
+            </div>
+
+            <div class="graph-container" id="graph-container">
+                <svg id="graph-svg"></svg>
+            </div>
+
+            <div class="graph-info" id="graph-info">
+                <p>Click on a node or topic for details</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="/static/app.js"></script>
+    <script src="/static/topics.js"></script>
+    <script src="/static/graph.js"></script>
+    <script>
+        // Initialize the application
+        document.addEventListener('DOMContentLoaded', () => {
+            App.init();
+            TopicPanel.init();
+            NodeGraph.init();
+        });
+    </script>
+</body>
+</html>
