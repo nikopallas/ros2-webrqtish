@@ -82,7 +82,12 @@ sudo apt install ros-jazzy-desktop
 git clone https://github.com/nikopallas/ros2-webrqtish.git
 cd ros2-webrqtish
 
-# Install Python dependencies
+# Install Python dependencies (Ubuntu 24.04)
+pip install --break-system-packages -r backend/requirements.txt
+
+# OR use a virtual environment (recommended)
+python3 -m venv venv
+source venv/bin/activate
 pip install -r backend/requirements.txt
 ```
 
@@ -93,8 +98,12 @@ pip install -r backend/requirements.txt
 ```bash
 # Terminal 1: Start the web GUI
 source /opt/ros/jazzy/setup.bash
-cd ros2-web-gui/backend
-python main.py
+cd ros2-webrqtish
+
+# If using venv:
+source venv/bin/activate
+
+python backend/main.py
 ```
 
 Open your browser to **http://localhost:8000**
@@ -260,16 +269,16 @@ ros2-web-gui/
 - Check that port 8000 is not blocked by a firewall
 - Ensure the backend is running without errors
 
-### Permission issues
+### "Externally managed environment" error (Ubuntu 24.04)
 
-If you see permission errors when installing Python packages:
-```bash
-pip install --user -r backend/requirements.txt
-```
+Ubuntu 24.04 uses PEP 668 which prevents system-wide pip installs. Use one of these:
 
-Or use a virtual environment:
 ```bash
-python -m venv venv
+# Option 1: Use --break-system-packages flag
+pip install --break-system-packages -r backend/requirements.txt
+
+# Option 2: Use a virtual environment (recommended)
+python3 -m venv venv
 source venv/bin/activate
 pip install -r backend/requirements.txt
 ```
